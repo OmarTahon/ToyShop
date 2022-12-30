@@ -3,7 +3,7 @@ Assuming that you have already installed Node.js on your machine, you should fol
 
 - Clone our repo:
 
-        git clone https://github.com/ZyadShokry/ToyShop.git
+        git clone https://github.com/OmarTahon/ToyShop.git
 
 - Install the app's dependencies:
 
