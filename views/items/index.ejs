@@ -9,10 +9,11 @@
 <body>
     <nav>
         <a href="/">Home</a>
-
-        <a href="/cart" class="material-icons shopping-cart">shopping_cart</a>
+        <a class="material-icons shopping-cart">shopping_cart</a>
     </nav>
-    <div id="items-container" class="container">
+
+  
+    <div class="container">
         <div class="grid">
             <% items.forEach(function(item){ %>
                 <div class="grid-item">
@@ -23,7 +24,7 @@
                             </h3>
                         </div>
                         <div class="grid-item-image-container">
-                            <img src="images/<%= item.image %>" />
+                            <img src="/images/<%= item.image %>" />
                         </div>
                         <div class="grid-item-description-price">
                             <div class="grid-item-description">
@@ -47,16 +48,7 @@
                 </div>
                 <% }); %>
         </div>
-        </div>
     </div>
 </body>
-<script type="text/javascript">
-    function toggleDisplay(target) {
-        // console.log()
-        if(getComputedStyle(target).display == 'block')
-            target.style.display = "none";
-        else
-            target.style.display = "block";
-    }
-</script>
+
 </html>

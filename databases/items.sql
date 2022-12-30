@@ -38,6 +38,7 @@ INSERT INTO `items` (`name`, `brand`, `description`, `price`, `image`) VALUES
 ('UNO Collector Tin', 'UNO', 'A premium quality uno set', 49.39, 'uno-phase10-snappy.png'),
 ('Razor MX350 Bike', 'Razor', 'A powerful electric bike', 328.00, 'mx350-bike.png');
 
+
 create table shopping_cart (
 	id int,
 	itemId int,
