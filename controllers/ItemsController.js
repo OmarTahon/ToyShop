@@ -16,6 +16,14 @@ module.exports = {
     },
 
     getItemsByBrand: async (req, res) => {
-        // ...
+         try {   
+            brand = req.params.brand
+            q = "SELECT * FROM items WHERE items.brand = '" + brand + "'";
+            const items = await sqlQuery(q);
+
+            res.render('items/index', { items });
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
