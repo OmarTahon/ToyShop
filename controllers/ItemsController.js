@@ -25,5 +25,17 @@ module.exports = {
         } catch (err) {
             res.status(500).send(err);
         }
+
+    },
+    getCartItems : async (req, res) => {
+        try {   
+            q = "SELECT * FROM shopping_cart ";
+            // const cartItems = await sqlQuery(q);
+            cartItems = [{name:"toy"}, {name:"car"}]
+            res.render('cart/index', {cartItems});
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    
     }
 }
