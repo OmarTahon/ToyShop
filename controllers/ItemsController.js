@@ -36,17 +36,34 @@ function queryParamProcess(query) {
 module.exports = {
     getItems: async (req, res) => {
         try {
-            const items = await sqlQuery('SELECT * FROM items');
-            // shuffle items at random
-            for (let i = items.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [items[i], items[j]] = [items[j], items[i]];
-            }
-            res.render('items/index', { items });
+          var queryProcess = queryParamProcess(req.query);
+    
+          q =
+            "SELECT * FROM items WHERE " +
+            queryProcess[0] +
+            " and " +
+            queryProcess[1] +
+            " and " +
+            queryProcess[2] +
+            " and " +
+            queryProcess[3];
+          console.log(q);
+          const items = await sqlQuery(q);
+          //   console.log(items)
+          // shuffle items at random
+          //   for (let i = items.length - 1; i > 0; i--) {
+          //     const j = Math.floor(Math.random() * (i + 1));
+          //     [items[i], items[j]] = [items[j], items[i]];
+          //   }
+    
+          const availableBrands = await sqlQuery(
+            "SELECT DISTINCT brand FROM items"
+          );
+          res.render("items/index", { items, availableBrands });
         } catch (err) {
-            res.status(500).send(err);
+          res.status(500).send(err);
         }
-    },
+      },
 
     getItemsByBrand: async (req, res) => {
         
