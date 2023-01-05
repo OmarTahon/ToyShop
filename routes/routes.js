@@ -15,4 +15,6 @@ router.get('/cart', ItemsController.getCartItems);
 
 module.exports = router;
     
+router.get('add/to/cart/:item_id',ItemsController.addItemToCart);
 
+router.get('delete/from/cart/:item_id',ItemsController.deleteItemFromCart);
