@@ -1,5 +1,38 @@
 const sqlQuery = require('../config/db');
 
+function queryParamProcess(query) {
+    var minVal = query.min;
+    var maxVal = query.max;
+    var brand = query.brand;
+    var searchVal = query.search;
+  
+    var minQ, maxQ, brandQ, searchQ;
+  
+    if (minVal == undefined || minVal <= 0 || isNaN(minVal)) minQ = "true";
+    else minQ = "price >= " + minVal;
+  
+    if (maxVal == undefined || maxVal <= 0 || isNaN(maxVal)) maxQ = "true";
+    else maxQ = "price <= " + maxVal;
+  
+    if (brand == undefined || brand == "all") brandQ = "true";
+    else brandQ = "brand = '" + brand + "'";
+  
+    if (searchVal == undefined || searchVal == "") searchQ = "true";
+    else
+      searchQ =
+        "(name = '" +
+        searchVal +
+        "' or name like '" +
+        searchVal +
+        "%') or (brand = '" +
+        searchVal +
+        "' or brand like '" +
+        searchVal +
+        "%')";
+  
+    return [minQ, maxQ, brandQ, searchQ];
+  }
+
 module.exports = {
     getItems: async (req, res) => {
         try {
