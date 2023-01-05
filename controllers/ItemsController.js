@@ -75,33 +75,35 @@ module.exports = {
           res.render("cart/index", { cartItems, availableBrands });
         } catch (err) {
           res.status(500).send(err);
-        }
-      },
-  
-  
-      getItemsByBrand: async (req, res) => {
-        
-        try {   
-            brand = req.params.brand
-            q = "SELECT * FROM items WHERE items.brand = '" + brand + "'";
-            const items = await sqlQuery(q);
-            
-            res.render('items/index', { items });
-        } catch (err) {
-            res.status(500).send(err);
         }
-    },
-    getCartItems : async (req, res) => {
-        try {   
-            q = "SELECT * FROM shopping_cart ";
-            // const cartItems = await sqlQuery(q);
-            cartItems = [{name:"toy"}, {name:"car"}]
-            res.render('cart/index', {cartItems});
+      },
+      addItemToCart: async (req, res) => {
+        try {
+          var item_id = req.params.item_id;
+    
+          q = "Select count(*) as c from shopping_cart where itemId = " + item_id;
+          const countItems = await sqlQuery(q);
+    
+          if (countItems[0].c == 0) {
+            q =
+              "INSERT INTO shopping_cart (itemId, quantity) VALUES (" +
+              item_id +
+              ", 1) ";
+            await sqlQuery(q);
+          } else {
+            q =
+              "UPDATE shopping_cart SET quantity = quantity + 1 WHERE itemId = " +
+              item_id;
+    
+            await sqlQuery(q);
+          }
+    
+          res.redirect(req.headers.referer);
         } catch (err) {
-            res.status(500).send(err);
+          res.status(500).send(err);
         }
-    }
-    deleteItemFromCart: async (req, res) => {
+      },
+      deleteItemFromCart: async (req, res) => {
         try {
           var item_id = req.params.item_id;
     
@@ -124,5 +126,6 @@ module.exports = {
           res.redirect(req.headers.referer);
         } catch (err) {
           res.status(500).send(err);
-        }
-}
+        }
+      },
+    };
