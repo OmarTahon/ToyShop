@@ -1,54 +1,85 @@
 <html>
-
-<head>
+  <head>
     <title>Items</title>
     <link rel="stylesheet" href="/styles/items.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
 
-<body>
+  <body>
     <nav>
-        <a href="/">Home</a>
-        <a class="material-icons shopping-cart">shopping_cart</a>
+      <a href="/">Home</a>
+      <form>
+        <label>Min</label>
+        <input type="text" placeholder="Minimum Value" name="min" />
+
+        <label>Max</label>
+        <input type="text" placeholder="Maximum Value" name="max" />
+
+        <select name="brand" id="cars">
+          <option value="all">All</option>
+          <% availableBrands.forEach(function(brand){%>
+          <option value="<%=brand.brand%>"><%=brand.brand%></option>
+          <% }); %>
+        </select>
+        <input type="submit" value="Filter" />
+      </form>
+
+      <form>
+        <label>Search : </label>
+        <input type="text" name="search" placeholder="Search by Brand or Toy name" />
+        <input type="submit" value="Search" />
+      </form>
+      <a href="/cart" class="material-icons shopping-cart">shopping_cart</a>
     </nav>
 
-  
-    <div class="container">
-        <div class="grid">
-            <% items.forEach(function(item){ %>
-                <div class="grid-item">
-                    <div class="grid-item-container">
-                        <div class="grid-item-name">
-                            <h3>
-                                <%= item.name %>
-                            </h3>
-                        </div>
-                        <div class="grid-item-image-container">
-                            <img src="/images/<%= item.image %>" />
-                        </div>
-                        <div class="grid-item-description-price">
-                            <div class="grid-item-description">
-                                <p>
-                                    <%= item.description %>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="grid-item-price">
-                            <p>$<%= item.price %>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="grid-item-buttons">
-                        <button class="grid-item-button button-add" type="button">
-                            <i class="material-icons">exposure_plus_1</i>
-                        </button>
-                        <button class="grid-item-button button-delete" type="button"><i
-                                class="material-icons">exposure_neg_1</i></button>
-                    </div>
-                </div>
-                <% }); %>
-        </div>
-    </div>
-</body>
+    <div id="items-container" class="container">
+      <div class="grid">
+        <% items.forEach(function(item){ %>
 
+        <div class="grid-item">
+          <div class="grid-item-container">
+            <div class="grid-item-name">
+              <h3><%= item.name %></h3>
+            </div>
+
+            <div class="grid-item-image-container">
+              <img src="/images/<%= item.image %>" />
+            </div>
+            <div class="grid-item-description-price">
+              <div class="grid-item-description">
+                <p><%= item.description %></p>
+              </div>
+            </div>
+            <div class="grid-item-price">
+              <p>Brand: <%= item.brand %></p>
+            </div>
+            <div class="grid-item-price">
+              <p>$<%= item.price %></p>
+            </div>
+          </div>
+          <div class="grid-item-buttons">
+            <button
+              onclick="location.href = '/add/to/cart/<%=item.id%>';"
+              class="grid-item-button button-add"
+              type="button"
+            >
+              <i class="material-icons">exposure_plus_1</i>
+            </button>
+            <button
+              onclick="location.href = '/delete/from/cart/<%=item.id%>';"
+              class="grid-item-button button-delete"
+              type="button"
+            >
+              <i class="material-icons">exposure_neg_1</i>
+            </button>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript"></script>
 </html>
