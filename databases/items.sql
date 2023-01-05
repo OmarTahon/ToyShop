@@ -33,15 +33,15 @@ INSERT INTO `items` (`name`, `brand`, `description`, `price`, `image`) VALUES
 ('Baby Mickey Mouse', 'Disney', 'A sweet baby Mickey plush', 18.88, 'baby-mickey.png'),
 ('Baby Minnie Mouse', 'Disney', 'A sweet baby Minnie plush', 51.23, 'baby-minnie.png'),
 ('3D Toddler Scooter', 'Bluey', 'A fantastic 3-wheel scooter', 29.00, 'toddler-scooter.png'),
-('Cottage Playhouse', 'Litte Tikes', 'A fancy blue playhouse', 139.99, 'cottage-playhouse.png'),
+('Cottage Playhouse', 'Little Tikes', 'A fancy blue playhouse', 139.99, 'cottage-playhouse.png'),
 ('2-in-1 Motor/Wood Shop', 'Little Tikes', 'A realistic motor/wood shop', 99.00, '2x1-motor-shop.png'),
 ('UNO Collector Tin', 'UNO', 'A premium quality uno set', 49.39, 'uno-phase10-snappy.png'),
 ('Razor MX350 Bike', 'Razor', 'A powerful electric bike', 328.00, 'mx350-bike.png');
 
 
 create table shopping_cart (
-	id int,
+	id int PRIMARY KEY AUTO_INCREMENT,
 	itemId int,
-	primary key (id),
+  quantity int,
 	foreign key (itemId) references items(id)
 )
