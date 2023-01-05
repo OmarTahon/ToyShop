@@ -65,7 +65,21 @@ module.exports = {
         }
       },
 
-    getItemsByBrand: async (req, res) => {
+      getCartItems: async (req, res) => {
+        try {
+          q = "SELECT * FROM shopping_cart sc JOIN items i ON i.id = sc.itemId ";
+          const cartItems = await sqlQuery(q);
+          const availableBrands = await sqlQuery(
+            "SELECT DISTINCT brand FROM items"
+          );
+          res.render("cart/index", { cartItems, availableBrands });
+        } catch (err) {
+          res.status(500).send(err);
+        }
+      },
+  
+  
+      getItemsByBrand: async (req, res) => {
         
         try {   
             brand = req.params.brand
@@ -87,4 +101,28 @@ module.exports = {
             res.status(500).send(err);
         }
     }
+    deleteItemFromCart: async (req, res) => {
+        try {
+          var item_id = req.params.item_id;
+    
+          q = "Select quantity as q from shopping_cart where itemId = " + item_id;
+          const countItems = await sqlQuery(q);
+          if (countItems.length != 0) {
+            var quantity = countItems[0].q;
+            console.log(quantity);
+    
+            if (quantity > 1)
+              qry =
+                "UPDATE shopping_cart SET quantity = " +
+                (quantity - 1) +
+                " WHERE itemId = " +
+                item_id;
+            else qry = "DELETE FROM shopping_cart WHERE itemId = " + item_id;
+    
+            await sqlQuery(qry);
+          }
+          res.redirect(req.headers.referer);
+        } catch (err) {
+          res.status(500).send(err);
+        }
 }
