@@ -7,14 +7,15 @@ const ItemsController = require('../controllers/ItemsController');
 /* define routes */
 router.get('/', ItemsController.getItems);
 
-// define route to catch the items under which brand
-router.get('/brand/:brand', ItemsController.getItemsByBrand);
 
 // define route to go to the cart
 router.get('/cart', ItemsController.getCartItems);
 
-module.exports = router;
-    
-router.get('add/to/cart/:item_id',ItemsController.addItemToCart);
+// define route to go to the cart
+router.get('/add/to/cart/:item_id', ItemsController.addItemToCart);
 
-router.get('delete/from/cart/:item_id',ItemsController.deleteItemFromCart);
+// define route to go to the cart
+router.get('/delete/from/cart/:item_id', ItemsController.deleteItemFromCart);
+
+
+module.exports = router;
