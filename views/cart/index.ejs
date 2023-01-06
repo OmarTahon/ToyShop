@@ -9,7 +9,9 @@
   </head>
 
   <body>
- 
+    <div>
+      <h2>Total Cost : $<%= totalCost[0].total == null ? 0 : totalCost[0].total %> </h2>
+    </div>
     <div id="items-container" class="container">
       <div class="grid">
         <% cartItems.forEach(function(item){ %>
@@ -59,6 +61,12 @@
         <button onclick="location.href = '/';">
           BACK TO ITEMS LIST
         </button>
+        <button onclick="location.href = '/checkout';">
+          <h1>Checkout</h1>
+        </button>
+      </div>
+      <div>
+        <h2>Total Cost : $<%= totalCost[0].total == null ? 0 : totalCost[0].total %> </h2>
       </div>
     </div>
   </body>

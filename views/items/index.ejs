@@ -29,12 +29,30 @@
 
       <form>
         <label>Search : </label>
-        <input type="text" name="search" placeholder="Search by Brand or Toy name" />
+        <input
+          type="text"
+          name="search"
+          placeholder="Search by Brand or Toy name"
+        />
         <input type="submit" value="Search" />
       </form>
+      <% if(isSignedIn == 'true') { %>
       <a href="/cart" class="material-icons shopping-cart">shopping_cart</a>
+      <% } %>
     </nav>
-
+    <div>
+      <% if(isSignedIn == 'true') { %>
+      <div style="display: flex; justify-content: space-between">
+        <h1>
+          Hello, <%= user.first_name + ' ' + user.last_name %>, Wallet : <%=
+          user.balance %>
+        </h1>
+        <h2><a href="/signout">Sign Out</a></h2>
+      </div>
+      <%} else { %>
+      <h1><a href="/signin">Sign In </a></h1>
+      <% } %>
+    </div>
     <div id="items-container" class="container">
       <div class="grid">
         <% items.forEach(function(item){ %>
@@ -60,6 +78,7 @@
               <p>$<%= item.price %></p>
             </div>
           </div>
+          <% if(isSignedIn == 'true') {%>
           <div class="grid-item-buttons">
             <button
               onclick="location.href = '/add/to/cart/<%=item.id%>';"
@@ -76,6 +95,7 @@
               <i class="material-icons">exposure_neg_1</i>
             </button>
           </div>
+          <% } %>
         </div>
         <% }); %>
       </div>
