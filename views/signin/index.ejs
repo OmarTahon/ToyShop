@@ -1,0 +1,306 @@
+<head>
+ <title>Bootstrap Example</title>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link
+   rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+ />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <script
+   src="https://cdn02.jotfor.ms/static/prototype.forms.js?3.3.35210"
+   type="text/javascript"
+ ></script>
+ <script
+   src="https://cdn03.jotfor.ms/static/jotform.forms.js?3.3.35210"
+   type="text/javascript"
+ ></script>
+ <script
+   defer
+   src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.js"
+ ></script>
+
+ <link
+   href="https://cdn01.jotfor.ms/static/formCss.css?3.3.35210"
+   rel="stylesheet"
+   type="text/css"
+ />
+ <style type="text/css">
+   @media print {
+     .form-section {
+       display: inline !important;
+     }
+     .form-pagebreak {
+       display: none !important;
+     }
+     .form-section-closed {
+       height: auto !important;
+     }
+     .page-section {
+       position: initial !important;
+     }
+   }
+ </style>
+ <link
+   type="text/css"
+   rel="stylesheet"
+   href="https://cdn02.jotfor.ms/css/styles/nova.css?3.3.35210"
+ />
+ <link
+   type="text/css"
+   rel="stylesheet"
+   href="https://cdn03.jotfor.ms/themes/CSS/566a91c2977cdfcd478b4567.css?themeRevisionID=5f6c4c83346ec05354558fe8"
+ />
+ <link
+   type="text/css"
+   rel="stylesheet"
+   href="https://cdn01.jotfor.ms/css/styles/payment/payment_feature.css?3.3.35210"
+ />
+ <style type="text/css">
+   .form-label-left {
+     width: 150px;
+   }
+   .form-line {
+     padding-top: 12px;
+     padding-bottom: 12px;
+   }
+   .form-label-right {
+     width: 150px;
+   }
+   .form-all {
+     width: 690px;
+     color: #555 !important;
+     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
+       Verdana, sans-serif;
+     font-size: 14px;
+   }
+   .form-radio-item label,
+   .form-checkbox-item label,
+   .form-grading-label,
+   .form-header {
+     color: false;
+   }
+ </style>
+
+ <style type="text/css" id="form-designer-style">
+   /* Injected CSS Code */
+   /PREFERENCES STYLE/
+   .form-all {
+     font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana,
+       Tahoma, sans-serif, sans-serif;
+   }
+   .form-all .qq-upload-button,
+   .form-all .form-submit-button,
+   .form-all .form-submit-reset,
+   .form-all .form-submit-print {
+     font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana,
+       Tahoma, sans-serif, sans-serif;
+   }
+   .form-all .form-pagebreak-back-container,
+   .form-all .form-pagebreak-next-container {
+     font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana,
+       Tahoma, sans-serif, sans-serif;
+   }
+   .form-header-group {
+     font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana,
+       Tahoma, sans-serif, sans-serif;
+   }
+   .form-label {
+     font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana,
+       Tahoma, sans-serif, sans-serif;
+   }
+
+   .form-label.form-label-auto {
+     display: inline-block;
+     float: left;
+     text-align: left;
+   }
+
+   .form-line {
+     margin-top: 12px 36px 12px 36px px;
+     margin-bottom: 12px 36px 12px 36px px;
+   }
+
+   .form-all {
+     max-width: 600px;
+     width: 100%;
+   }
+
+   .form-label.form-label-left,
+   .form-label.form-label-right,
+   .form-label.form-label-left.form-label-auto,
+   .form-label.form-label-right.form-label-auto {
+     width: 133px;
+   }
+
+   .form-all {
+     font-size: 14px;
+   }
+   .form-all .qq-upload-button,
+   .form-all .qq-upload-button,
+   .form-all .form-submit-button,
+   .form-all .form-submit-reset,
+   .form-all .form-submit-print {
+     font-size: 14px;
+   }
+   .form-all .form-pagebreak-back-container,
+   .form-all .form-pagebreak-next-container {
+     font-size: 14px;
+   }
+
+   .supernova .form-all,
+   /* .form-all {
+     background-color: ;
+   } */
+
+   .form-all {
+     color: Black;
+   }
+   .form-header-group .form-header {
+     color: Black;
+   }
+   .form-header-group .form-subHeader {
+     color: Black;
+   }
+   .form-label-top,
+   .form-label-left,
+   .form-label-right,
+   .form-html,
+   .form-checkbox-item label,
+   .form-radio-item label {
+     color: Black;
+   }
+   .form-sub-label {
+     color: 1a1a25;
+   }
+
+   .supernova {
+     background-color: undefined;
+   }
+   .supernova body {
+     background: transparent;
+   }
+
+   .form-textbox,
+   .form-textarea,
+   .form-dropdown,
+   .form-radio-other-input,
+   .form-checkbox-other-input,
+   .form-captcha input,
+   .form-spinner input {
+     background-color: undefined;
+   }
+
+   .supernova {
+     background-image: none;
+   }
+   #stage {
+     background-image: none;
+   }
+
+   .form-all {
+     background-image: none;
+   }
+
+   .ie-8 .form-all:before {
+     display: none;
+   }
+   .ie-8 {
+     margin-top: auto;
+     margin-top: initial;
+   }
+ </style>
+
+ <form
+   class="jotform-form"
+   accept-charset="utf-8"
+   action="/signin"
+   method="post"
+ >
+   <div role="main" class="form-all">
+     <ul class="form-section page-section">
+       <li id="cid_33" class="form-input-wide" data-type="control_head">
+         <div class="form-header-group header-large">
+           <div class="header-text httal htvam">
+             <h1 id="header_33" class="form-header" data-component="header">
+               Sign In
+             </h1>
+           </div>
+         </div>
+       </li>
+       <li
+         class="form-line jf-required"
+         data-type="control_fullname"
+         id="id_38"
+       ></li>
+
+       <li class="form-line" data-type="control_email" id="id_37">
+         <label
+           class="form-label form-label-top form-label-auto"
+           id="label_37"
+           for="input_37"
+         >
+           Email Address
+         </label>
+         <div id="cid_37" class="form-input-wide">
+           <input
+             type="email"
+             name="email"
+             id="input_37"
+             class="form-textbox validate[Email]"
+             size="32"
+           />
+         </div>
+       </li>
+       <li class="form-line" data-type="control_phone" id="id_36">
+         <label
+           class="form-label form-label-top form-label-auto"
+           id="label_36"
+           for="input_36_area"
+         >
+           Password
+         </label>
+         <div id="cid_36" class="form-input-wide">
+           <div data-wrapper-react="true">
+             <span
+               class="form-sub-label-container"
+               style="vertical-align: top"
+               data-input-type="areaCode"
+             >
+               <input
+                 id="input_36_area"
+                 type="Password"
+                 class="form-textbox"
+                 name="password"
+               />
+             </span>
+           </div>
+         </div>
+       </li>
+       <li class="form-line" data-type="control_button" id="id_35">
+         <div id="cid_35" class="form-input-wide">
+           <div
+             style="margin-left: 156px"
+             data-align="auto"
+             class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField"
+           >
+             <button
+               id="input_35"
+               type="submit"
+               class="form-submit-button submit-button jf-form-buttons jsTest-submitField"
+               data-component="button"
+               data-content=""
+               onclick="location.href = '/';"
+             >
+               Sign In
+             </button>
+           </div>
+         </div>
+       </li>
+     </ul>
+   </div>
+ </form>
+</body>
