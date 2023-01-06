@@ -38,7 +38,7 @@ module.exports = {
     try {
       var queryProcess = queryParamProcess(req.query);
       cookies = req.cookies;
-      console.log(cookies)
+      console.log(cookies);
       q =
         "SELECT * FROM items WHERE " +
         queryProcess[0] +
@@ -51,8 +51,12 @@ module.exports = {
       // console.log(q);
       const items = await sqlQuery(q);
 
-      const getUser = await sqlQuery("SELECT * FROM users WHERE id = " + cookies.userId)
-      console.log(getUser)
+      if (cookies.isSignedIn == "true")
+        getUser = await sqlQuery(
+          "SELECT * FROM users WHERE id = " + cookies.userId
+        );
+      else getUser = [-1];
+      console.log(getUser);
       //   console.log(items)
       // shuffle items at random
       //   for (let i = items.length - 1; i > 0; i--) {
@@ -78,9 +82,11 @@ module.exports = {
     try {
       cookies = req.cookies;
       console.log(cookies);
-     
+
       if (cookies.isSignedIn == "true") {
-        const getUser = await sqlQuery("SELECT * FROM users WHERE id = " + cookies.userId)
+        const getUser = await sqlQuery(
+          "SELECT * FROM users WHERE id = " + cookies.userId
+        );
         const user = getUser[0];
         q =
           "SELECT * FROM shopping_cart sc JOIN items i ON i.id = sc.itemId and sc.userId = " +
@@ -104,7 +110,9 @@ module.exports = {
     try {
       var item_id = req.params.item_id;
       cookies = req.cookies;
-      const getUser = await sqlQuery("SELECT * FROM users WHERE id = " + cookies.userId)
+      const getUser = await sqlQuery(
+        "SELECT * FROM users WHERE id = " + cookies.userId
+      );
       const user = getUser[0];
       // console.log(cookies)
 
@@ -144,7 +152,9 @@ module.exports = {
     try {
       var item_id = req.params.item_id;
       cookies = req.cookies;
-      const getUser = await sqlQuery("SELECT * FROM users WHERE id = " + cookies.userId)
+      const getUser = await sqlQuery(
+        "SELECT * FROM users WHERE id = " + cookies.userId
+      );
       const user = getUser[0];
 
       q =
@@ -216,8 +226,7 @@ module.exports = {
   },
   signout: async (req, res) => {
     try {
-      res.clearCookie("userId");
-      res.clearCookie("user");
+      res.cookie("userId", -1);
       res.cookie("isSignedIn", false);
       res.redirect(req.headers.referer);
     } catch (err) {
@@ -226,26 +235,45 @@ module.exports = {
   },
   checkout: async (req, res) => {
     try {
-      const getUser = await sqlQuery("SELECT * FROM users WHERE id = " + cookies.userId)
+      const getUser = await sqlQuery(
+        "SELECT * FROM users WHERE id = " + cookies.userId
+      );
       const user = getUser[0];
 
-      const userBalance = await sqlQuery("SELECT balance from users WHERE id = "+user.id);
+      const userBalance = await sqlQuery(
+        "SELECT balance from users WHERE id = " + user.id
+      );
       const totalCost = await sqlQuery(
-        "SELECT SUM(i.price * sc.quantity) as total FROM shopping_cart sc JOIN items i ON i.id = sc.itemId and sc.userId = " +
+        "SELECT SUM(i.price * sc.quantity) as total, SUM(sc.quantity) as totalItems FROM shopping_cart sc JOIN items i ON i.id = sc.itemId and sc.userId = " +
           user.id
       );
-      const balanceAfterCheckout = userBalance[0].balance - parseInt(totalCost[0].total)
-      console.log(balanceAfterCheckout)
-      if(balanceAfterCheckout > 0)
-      {
-        // Checkout Success
-        await sqlQuery("UPDATE users SET balance = " + balanceAfterCheckout + " WHERE id = " + user.id)
-        res.redirect('/');
-      }
-      else
-      {
-        msg = "Insufficient Money in your Wallet. Go back to the cart from <a href='/cart'>here</a>"
-        res.status(204).send(msg);
+      console.log(totalCost);
+      const balanceAfterCheckout =
+        userBalance[0].balance - parseInt(totalCost[0].total);
+      console.log(balanceAfterCheckout);
+
+      if (totalCost[0].totalItems != null) {
+        if (balanceAfterCheckout >= 0) {
+          // Checkout Success
+          await sqlQuery(
+            "UPDATE users SET balance = " +
+              balanceAfterCheckout +
+              " WHERE id = " +
+              user.id
+          );
+          await sqlQuery("DELETE FROM shopping_cart WHERE userId = " + user.id)
+          res.redirect("/");
+        } else {
+          msg =
+            "Insufficient Money in your Wallet. Go back to the cart from <a href='/cart'>here</a>";
+
+          res.render("message/index", { msg });
+        }
+      } else {
+        msg =
+          "You're Shopping Cart is empty. Buy items from <a href='/'>here</a>";
+
+        res.render("message/index", { msg });
       }
     } catch (err) {
       res.status(500).send(err);
