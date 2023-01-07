@@ -1,4 +1,16 @@
+
 {
+  "name": "toy-shop",
+  "version": "1.0.0",
+  "description": "a shop :')",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
@@ -6,5 +18,10 @@
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "util": "^0.12.5"
+  },
+  "author": "him",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
   }
 }
