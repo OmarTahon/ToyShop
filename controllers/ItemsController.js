@@ -38,7 +38,7 @@ module.exports = {
     try {
       var queryProcess = queryParamProcess(req.query);
       cookies = req.cookies;
-      console.log(cookies);
+     //console.log(cookies);
       q =
         "SELECT * FROM items WHERE " +
         queryProcess[0] +
@@ -56,7 +56,7 @@ module.exports = {
           "SELECT * FROM users WHERE id = " + cookies.userId
         );
       else getUser = [-1];
-      console.log(getUser);
+    //  console.log(getUser);
       //   console.log(items)
       // shuffle items at random
       //   for (let i = items.length - 1; i > 0; i--) {
@@ -81,7 +81,7 @@ module.exports = {
   getCartItems: async (req, res) => {
     try {
       cookies = req.cookies;
-      console.log(cookies);
+     // console.log(cookies);
 
       if (cookies.isSignedIn == "true") {
         const getUser = await sqlQuery(
@@ -96,7 +96,7 @@ module.exports = {
           "SELECT SUM(i.price * sc.quantity) as total FROM shopping_cart sc JOIN items i ON i.id = sc.itemId and sc.userId = " +
             user.id
         );
-        console.log(totalCost);
+      //  console.log(totalCost);
         res.render("cart/index", { cartItems, totalCost });
       } else {
         msg = "Please <a href='/signin'>Sign In</a>";
@@ -165,7 +165,7 @@ module.exports = {
       const countItems = await sqlQuery(q);
       if (countItems.length != 0) {
         var quantity = countItems[0].q;
-        console.log(quantity);
+       // console.log(quantity);
 
         if (quantity > 1)
           qry =
@@ -247,10 +247,10 @@ module.exports = {
         "SELECT SUM(i.price * sc.quantity) as total, SUM(sc.quantity) as totalItems FROM shopping_cart sc JOIN items i ON i.id = sc.itemId and sc.userId = " +
           user.id
       );
-      console.log(totalCost);
+     // console.log(totalCost);
       const balanceAfterCheckout =
         userBalance[0].balance - parseInt(totalCost[0].total);
-      console.log(balanceAfterCheckout);
+      //console.log(balanceAfterCheckout);
 
       if (totalCost[0].totalItems != null) {
         if (balanceAfterCheckout >= 0) {
@@ -267,13 +267,13 @@ module.exports = {
           msg =
             "Insufficient Money in your Wallet. Go back to the cart from <a href='/cart'>here</a>";
 
-          res.render("message/index", { msg });
+          res.render("messages/index", { msg });
         }
       } else {
         msg =
           "You're Shopping Cart is empty. Buy items from <a href='/'>here</a>";
 
-        res.render("message/index", { msg });
+        res.render("messages/index", { msg });
       }
     } catch (err) {
       res.status(500).send(err);
