@@ -2,35 +2,19 @@
 CREATE DATABASE IF NOT EXISTS `shop`;
 
 --- use dummy database
-use shop
+USE `shop`;
 
-create table users (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    first_name varchar(30),
-    last_name varchar(30),
-    email varchar(255),
-    pword varchar(255),
-    balance int
+--- create table
+CREATE TABLE IF NOT EXISTS `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `brand` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `price` decimal(6,2) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
-)
-
-
-INSERT INTO users (first_name,last_name,email,pword,balance)
-VALUES ("Omar", "Tahon", "omar.tohan@ejust.edu.eg", "123", 99999999),
-("Ziyad", "Shokry", "ziyad.shokry@ejust.edu.eg", "123", 1000),
-("Osama", "Adel", "osama.feshier@ejust.edu.eg", "123", 999999),
-("Karim", "Fouad", "karim.fouad@ejust.edu.eg", "123", 99999999),
-("Hamo", "Eltekha", "hamo.eltekha@hamboly.mola", "123", 1)
-
-
-create table shopping_cart (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    itemId int,
-    quantity int,
-    userId int,
-    foreign key (itemId) references items(id),
-    foreign key (userId) references users(id)
-)
 --- insert dummy toy items (e.g. for a toy shop)
 INSERT INTO `items` (`name`, `brand`, `description`, `price`, `image`) VALUES
 ('Teddy Bear', 'LotFancy', 'A cute teddy bear', 14.99, 'teddy-bear.png'),
@@ -55,3 +39,33 @@ INSERT INTO `items` (`name`, `brand`, `description`, `price`, `image`) VALUES
 ('Razor MX350 Bike', 'Razor', 'A powerful electric bike', 328.00, 'mx350-bike.png');
 
 
+use shop
+
+create table users (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	first_name varchar(30),
+	last_name varchar(30),
+	email varchar(255),
+	pword varchar(255),
+	balance int
+
+)
+
+
+INSERT INTO users (first_name,last_name,email,pword,balance)
+VALUES ('Omar', 'Tahon', 'omar.tohan@ejust.edu.eg', '123', 99999999),
+('Ziyad', 'Shokry', 'ziyad.shokry@ejust.edu.eg', '123', 1000),
+('Osama', 'Adel', 'osama.feshier@ejust.edu.eg', '123', 999999),
+('Karim', 'Fouad', 'karim.fouad@ejust.edu.eg', '123', 99999999),
+('Hamo', 'Eltekha', 'hamo.eltekha@hamboly.mola', '123', 1)
+
+
+create table shopping_cart (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	itemId int,
+	quantity int,
+	userId int,
+	foreign key (itemId) references items(id),
+	foreign key (userId) references users(id)
+)
+  

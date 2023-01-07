@@ -101,5 +101,22 @@
       </div>
     </div>
   </body>
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    var images = document.getElementsByTagName("img");
+    var audio = new Audio("/images/audiomass-output.mp3");
+    for (const image of images) {
+      image.addEventListener("mouseover", function () {
+        // do whatever
+        audio.play();
+        audio.onended = function () {
+          audio.play();
+        };
+      });
+
+      image.addEventListener("mouseout", function () {
+        // do whatever
+        audio.pause();
+      });
+    }
+  </script>
 </html>
