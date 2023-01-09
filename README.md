@@ -22,10 +22,9 @@ It's a simple web application for a toy shop where it contains the following:
 - The user should find himself on the home page where all the items available on the website are listed
 - Each item has it's Name, Brand, Description, Price, and Image
 - Each user has a first_name, last_name, email, password, balance, and id
-- ![DE](https://user-images.githubusercontent.com/103469262/211391673-a9cf610c-f31f-48fa-8705-8b7bda9914a2.jpg)
-
 - A shopping cart has two forign keys, itemId, and userId, a quantity and id
--  
+- ![DE](https://user-images.githubusercontent.com/103469262/211391673-a9cf610c-f31f-48fa-8705-8b7bda9914a2.jpg)
+  
 - Search bar
 - Minimum value bar, maximum value bar
 - Drop down list contains all the a available brands
