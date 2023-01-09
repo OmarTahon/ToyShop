@@ -84,11 +84,12 @@ When the user finishes shopping, he can sign out by clicking on the Sign out but
                 router.get('/signout', ItemsController.signout)
 
 
-Team members' contribution on the bonus features:
-- Modifying the project to serve multiple users is done by **Karim Fouad**
-- Simulating the payment process is done by **Omar Tahon**
-- Adding a cool feature (hovering over the item image to make a funny sound and motion) is done by **Omar Tahon**
-- Host the project on a server or a cloud service, is done by both team members **Karim Fouad** and **Omar Tahon**
+
+##Team members' contribution on the bonus features:
+- Modifying the project to serve multiple users was done by **Karim Fouad**
+- Simulating the payment process was done by **Omar Tahon**
+- Adding a cool feature (hovering over the item image to make a funny sound and motion) was done by **Omar Tahon**
+- Hosting the project on a server or a cloud service was done by both team members **Karim Fouad** and **Omar Tahon**
 
 
 
