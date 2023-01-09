@@ -17,8 +17,33 @@ Assuming that you have already installed Node.js on your machine, you should fol
         SQL_PASSWORD=ABCDEF
         SQL_DATABASE=shop
         
+        
+
+## You can visit the website using the following link:
+
+        https://toyshop-ejust.onrender.com/
+        
+
 ## Project description 
-It's a simple web application for a toy shop where it contains the following:
+It's a simple web application for a toy shop
+- The Project was hosted by the website **onrender** to deploy **express js.**, and it uses the website **freemysql** for the database
+- To sign in, use the folloing email:
+
+        ziyad.shokry@ejust.edu.eg
+
+- Password:
+
+        123
+        
+ - To sign in with an empty wallet, use the following email:
+ 
+        hamo.eltekha@hamboly.mola
+        
+ - Password:
+
+        123
+        
+The website contains the following:
 
 - The user should find himself on the home page where all the items available on the website are listed
 - Each item has it's Name, Brand, Description, Price, and Image
@@ -82,6 +107,8 @@ When clicking on the 'Checkout' button, the following route will be triggered:
 When the user finishes shopping, he can sign out by clicking on the Sign out button to trigger the following route:
 
                 router.get('/signout', ItemsController.signout)
+
+
 
 
 
