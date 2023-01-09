@@ -85,7 +85,7 @@ When the user finishes shopping, he can sign out by clicking on the Sign out but
 
 
 
-##Team members' contribution on the bonus features:
+## Team members' contribution on the bonus features:
 - Modifying the project to serve multiple users was done by **Karim Fouad**
 - Simulating the payment process was done by **Omar Tahon**
 - Adding a cool feature (hovering over the item image to make a funny sound and motion) was done by **Omar Tahon**
