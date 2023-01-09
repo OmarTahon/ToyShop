@@ -27,21 +27,17 @@ Assuming that you have already installed Node.js on your machine, you should fol
 ## Project description 
 It's a simple web application for a toy shop
 - The Project was hosted by the website **onrender** to deploy **express js.**, and it uses the website **freemysql** for the database
-- To sign in, use the folloing email:
+- To sign in, use the following email:
 
-        ziyad.shokry@ejust.edu.eg
+        email: ziyad.shokry@ejust.edu.eg
+        Password: 123
 
-- Password:
-
-        123
         
- - To sign in with an empty wallet, use the following email:
+ - To sign in with an empty wallet account, use the following email:
  
-        hamo.eltekha@hamboly.mola
-        
- - Password:
+        email: hamo.eltekha@hamboly.mola
+        Password: 123
 
-        123
         
 The website contains the following:
 
