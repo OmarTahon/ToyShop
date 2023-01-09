@@ -23,7 +23,7 @@ It's a simple web application for a toy shop where it contains the following:
 - Each item has it's Name, Brand, Description, Price, and Image
 - Each user has a first_name, last_name, email, password, balance, and id
 - A shopping cart has two forign keys, itemId, and userId, a quantity and id
-- ![DE](https://user-images.githubusercontent.com/103469262/211391673-a9cf610c-f31f-48fa-8705-8b7bda9914a2.jpg)
+![DE](https://user-images.githubusercontent.com/103469262/211391673-a9cf610c-f31f-48fa-8705-8b7bda9914a2.jpg)
   
 - Search bar
 - Minimum value bar, maximum value bar
@@ -37,7 +37,9 @@ The User can do the following:
 - The user can filter the search results by selecting the brand he wants from the drop down list
 
 In order to add some items to the shopping cart, the user has to sign in first
-- By clicking on the Sign In bottun, the user finds himself on the sign in page where he need to write his email and pasword
+- By clicking on the Sign In bottun, the user finds himself on the sign in page where he need to write his email and pasword by triggering the following route:
+        router.get('/signin', ItemsController.signin_page)
+
 - After entering the email and password the user will return to the home page with the ability to add items to the shopping cart
 
 After the signing in process, the welcom sentence will show up containing the user name followed by his wallet balance.
