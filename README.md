@@ -8,6 +8,7 @@ Assuming that you have already installed Node.js on your machine, you should fol
 - Install the app's dependencies:
 
         npm install
+        npm install cookie-parser
 - Create an ".env" file and write the following, replacing the user and password of your own MySQL client:
 
         
