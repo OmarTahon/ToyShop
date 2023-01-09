@@ -45,6 +45,7 @@ The website contains the following:
 - Each item has Name, Brand, Description, Price, and Image
 - Each user has a first_name, last_name, email, password, balance, and id
 - A shopping cart has two foreign keys, itemId, and userId, a quantity and id
+
 ![DE](https://user-images.githubusercontent.com/103469262/211391673-a9cf610c-f31f-48fa-8705-8b7bda9914a2.jpg)
   
 - Search bar
