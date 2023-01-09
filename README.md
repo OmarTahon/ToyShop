@@ -53,11 +53,13 @@ The website contains the following:
 - Drop down list contains all the available brands
 
 
+
 The User can do the following:
 - User can search for specific items using the search bar
 - The search can be done using the item's name or the brand
 - The user can filter the search results by typing the minimum value and maximum value of the items he wishes to find
 - The user can filter the search results by selecting the brand he wants from the drop-down list
+
 
 To add some items to the shopping cart, the user has to sign in first
 - By clicking on the Sign in button, by triggering the following route:
@@ -70,15 +72,18 @@ To add some items to the shopping cart, the user has to sign in first
 
 - The user will return to the home page with the ability to add items to the shopping cart
 
+
 After the signing in process, the welcome sentence will show up containing the user name followed by his wallet balance.
 the options available on each item will change to contain extra two buttons 
 - +1 button where on every click the item should be added to the cart with an amount equal to the number of clicks 
 - -1 button which does the opposite of the +1 button
 
+
 When the user finishes shopping, he can click on the cart icon to finish the purchasing process and trigger the following route:
 
                 router.get('/cart', ItemsController.getCartItems);
-                
+ 
+ 
 On the cart page:
 - The user can see the total cost of the items he selected
 - The user can see the items he selected
@@ -93,6 +98,7 @@ The cart page contains other buttons
 - 'BACK TO ITEMS LIST' button to return and select more items from the list
 - 'Checkout' button to confirm the purchasing process
 
+
 When clicking on the 'Checkout' button, the following route will be triggered:
 
                 router.get('/checkout', ItemsController.checkout)
@@ -100,6 +106,7 @@ When clicking on the 'Checkout' button, the following route will be triggered:
 - If the wallet balance is enough, the purchase process will complete
 - If the wallet balance is less than the total cost, a message says 'Insufficient Money in your Wallet. Go back to the cart from here' will appear
 - When the user clicks on 'here', he will return to his cart to modify the items to make the total cost less than the wallet balance
+
 
 When the user finishes shopping, he can sign out by clicking on the Sign out button to trigger the following route:
 
